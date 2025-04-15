@@ -19,9 +19,9 @@ const formSchema = z.object({
   email: z.string().email('Invalid email address'),
   phone: z.string().min(10, 'Phone number is required'),
   role: z.string().min(1, 'Please select your role'),
-  expectations: z.string().optional(),
-  terms: z.literal(true, {
-    errorMap: () => ({ message: 'You must agree to the terms and conditions' }),
+  expectations: z.string().nullable(),
+  terms: z.boolean().refine(val => val === true, {
+    message: 'You must agree to the terms and conditions',
   }),
 });
 
@@ -39,7 +39,7 @@ export default function RsvpForm() {
       email: '',
       phone: '',
       role: '',
-      expectations: '',
+      expectations: null,
       terms: false,
     },
   });
@@ -255,6 +255,7 @@ export default function RsvpForm() {
                         <FormControl>
                           <Textarea 
                             {...field} 
+                            value={field.value || ''} 
                             rows={3}
                             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" 
                           />

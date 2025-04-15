@@ -42,8 +42,12 @@ export class MemStorage implements IStorage {
     const id = this.attendeeId++;
     const now = new Date();
     
+    // Ensure expectations is never undefined
+    const expectations = attendeeData.expectations === undefined ? null : attendeeData.expectations;
+    
     const attendee: Attendee = {
       ...attendeeData,
+      expectations,
       id,
       registeredAt: now,
       isPaid: false
@@ -125,9 +129,15 @@ export class MemStorage implements IStorage {
 export class DatabaseStorage implements IStorage {
   // Attendee methods
   async createAttendee(attendeeData: InsertAttendee): Promise<Attendee> {
+    // Ensure expectations is never undefined
+    const expectations = attendeeData.expectations === undefined ? null : attendeeData.expectations;
+    
     const [attendee] = await db
       .insert(attendees)
-      .values(attendeeData)
+      .values({
+        ...attendeeData,
+        expectations
+      })
       .returning();
     return attendee;
   }

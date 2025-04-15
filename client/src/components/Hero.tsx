@@ -41,7 +41,7 @@ export default function Hero() {
         <p className="text-white text-lg md:text-xl max-w-2xl mb-8">Annual Networking Event for Wedding Professionals</p>
         
         <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-          <a href="#rsvp" className="bg-primary hover:bg-opacity-90 text-white px-8 py-3 rounded-full text-lg transition-colors duration-300">RSVP Now</a>
+          <a href="#rsvp" className="bg-primary hover:bg-opacity-90 text-white px-8 py-3 rounded-full text-lg transition-colors duration-300">Book Now</a>
           <a href="#event" className="bg-transparent hover:bg-white hover:bg-opacity-20 text-white border-2 border-white px-8 py-3 rounded-full text-lg transition-colors duration-300">Learn More</a>
         </div>
         
