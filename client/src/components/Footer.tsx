@@ -20,7 +20,6 @@ const quickLinks = [
   { name: 'Event Information', href: '#event' },
   { name: 'Speakers', href: '#speakers' },
   { name: 'Event Schedule', href: '#schedule' },
-  { name: 'Gallery', href: '#gallery' },
   { name: 'FAQs', href: '#faq' },
   { name: 'Book Now', href: '#book' }
 ];

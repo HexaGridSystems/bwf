@@ -46,7 +46,6 @@ export default function Navbar() {
           <a href="#about" className="text-[#1E3D59] hover:text-primary transition-colors duration-300">About</a>
           <a href="#event" className="text-[#1E3D59] hover:text-primary transition-colors duration-300">Event</a>
           <a href="#speakers" className="text-[#1E3D59] hover:text-primary transition-colors duration-300">Speakers</a>
-          <a href="#gallery" className="text-[#1E3D59] hover:text-primary transition-colors duration-300">Gallery</a>
           <a href="#faq" className="text-[#1E3D59] hover:text-primary transition-colors duration-300">FAQ</a>
           <a href="#book" className="bg-primary hover:bg-opacity-90 text-white px-6 py-2 rounded-full transition-colors duration-300">Book Now</a>
         </nav>
@@ -70,7 +69,6 @@ export default function Navbar() {
           <a href="#about" className="text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>About</a>
           <a href="#event" className="text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>Event</a>
           <a href="#speakers" className="text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>Speakers</a>
-          <a href="#gallery" className="text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>Gallery</a>
           <a href="#faq" className="text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>FAQ</a>
           <a href="#book" className="bg-primary text-white text-center py-2 rounded-full mt-2" onClick={() => setIsMenuOpen(false)}>Book Now</a>
         </div>

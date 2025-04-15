@@ -5,7 +5,6 @@ import About from '@/components/About';
 import EventInfo from '@/components/EventInfo';
 import EventSchedule from '@/components/EventSchedule';
 import Speakers from '@/components/Speakers';
-import Gallery from '@/components/Gallery';
 import Sponsors from '@/components/Sponsors';
 import Faq from '@/components/Faq';
 import Venue from '@/components/Venue';
@@ -43,7 +42,6 @@ export default function Home() {
       <EventInfo />
       <EventSchedule />
       <Speakers />
-      <Gallery />
       <Sponsors />
       <Faq />
       <Venue />
