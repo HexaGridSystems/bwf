@@ -9,6 +9,7 @@ export interface IStorage {
   getAttendeeByEmail(email: string): Promise<Attendee | undefined>;
   getAllAttendees(): Promise<Attendee[]>;
   getAttendeesCount(): Promise<number>;
+  updateAttendeePaymentStatus(id: number, isPaid: boolean): Promise<Attendee | undefined>;
   
   // Contact message methods
   createContactMessage(message: InsertContactMessage): Promise<ContactMessage>;
@@ -76,6 +77,19 @@ export class MemStorage implements IStorage {
 
   async getAttendeesCount(): Promise<number> {
     return this.attendees.size;
+  }
+  
+  async updateAttendeePaymentStatus(id: number, isPaid: boolean): Promise<Attendee | undefined> {
+    const attendee = this.attendees.get(id);
+    if (!attendee) return undefined;
+    
+    const updatedAttendee: Attendee = {
+      ...attendee,
+      isPaid
+    };
+    
+    this.attendees.set(id, updatedAttendee);
+    return updatedAttendee;
   }
 
   // Contact message methods
@@ -165,6 +179,16 @@ export class DatabaseStorage implements IStorage {
   async getAttendeesCount(): Promise<number> {
     const result = await db.select().from(attendees);
     return result.length;
+  }
+  
+  async updateAttendeePaymentStatus(id: number, isPaid: boolean): Promise<Attendee | undefined> {
+    const [updatedAttendee] = await db
+      .update(attendees)
+      .set({ isPaid })
+      .where(eq(attendees.id, id))
+      .returning();
+    
+    return updatedAttendee;
   }
 
   // Contact message methods

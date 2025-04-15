@@ -4,6 +4,7 @@ import { storage } from "./storage";
 import { insertAttendeeSchema, insertContactMessageSchema, insertSubscriberSchema } from "@shared/schema";
 import { ZodError } from "zod";
 import { fromZodError } from "zod-validation-error";
+import { createOrder, verifyPayment, getOrderDetails, getPaymentDetails } from "./payments";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Event registration endpoint
@@ -114,6 +115,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
     }
   });
+
+  // Payment routes
+  app.post("/api/payment/create-order", createOrder);
+  app.post("/api/payment/verify", verifyPayment);
+  app.get("/api/payment/order/:orderId", getOrderDetails);
+  app.get("/api/payment/details/:paymentId", getPaymentDetails);
 
   const httpServer = createServer(app);
   return httpServer;
