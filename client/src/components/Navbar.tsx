@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { cn } from "@/lib/utils";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [location] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,7 +32,7 @@ export default function Navbar() {
       isScrolled ? "bg-white shadow-md" : "bg-white/90"
     )}>
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        <a href="#hero" className="flex items-center space-x-2 z-10">
+        <Link href="/" className="flex items-center space-x-2 z-10">
           <div className="relative w-10 h-10 rounded-full bg-primary flex items-center justify-center">
             <span className="font-['Great_Vibes'] text-white text-xl">BWF</span>
           </div>
@@ -39,15 +40,15 @@ export default function Navbar() {
             <h1 className="font-['Playfair_Display'] text-[#1E3D59] text-lg font-semibold leading-none">Bengaluru</h1>
             <p className="font-['Great_Vibes'] text-primary text-sm">Wedding Fraternity</p>
           </div>
-        </a>
+        </Link>
         
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          <a href="#about" className="text-[#1E3D59] hover:text-primary transition-colors duration-300">About</a>
-          <a href="#event" className="text-[#1E3D59] hover:text-primary transition-colors duration-300">Event</a>
-          <a href="#speakers" className="text-[#1E3D59] hover:text-primary transition-colors duration-300">Speakers</a>
-          <a href="#faq" className="text-[#1E3D59] hover:text-primary transition-colors duration-300">FAQ</a>
-          <a href="#book" className="bg-primary hover:bg-opacity-90 text-white px-6 py-2 rounded-full transition-colors duration-300">Book Now</a>
+          <Link href="/about" className={cn("text-[#1E3D59] hover:text-primary transition-colors duration-300", location === "/about" && "text-primary")}>About</Link>
+          <Link href="/event" className={cn("text-[#1E3D59] hover:text-primary transition-colors duration-300", location === "/event" && "text-primary")}>Event</Link>
+          <Link href="/speakers" className={cn("text-[#1E3D59] hover:text-primary transition-colors duration-300", location === "/speakers" && "text-primary")}>Speakers</Link>
+          <Link href="/faq" className={cn("text-[#1E3D59] hover:text-primary transition-colors duration-300", location === "/faq" && "text-primary")}>FAQ</Link>
+          <Link href="/book" className="bg-primary hover:bg-opacity-90 text-white px-6 py-2 rounded-full transition-colors duration-300">Book Now</Link>
         </nav>
         
         {/* Mobile Menu Button */}
@@ -66,11 +67,11 @@ export default function Navbar() {
         isMenuOpen ? "opacity-100 max-h-80" : "opacity-0 max-h-0 overflow-hidden"
       )}>
         <div className="container mx-auto px-4 py-2 flex flex-col space-y-4">
-          <a href="#about" className="text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>About</a>
-          <a href="#event" className="text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>Event</a>
-          <a href="#speakers" className="text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>Speakers</a>
-          <a href="#faq" className="text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>FAQ</a>
-          <a href="#book" className="bg-primary text-white text-center py-2 rounded-full mt-2" onClick={() => setIsMenuOpen(false)}>Book Now</a>
+          <Link href="/about" className={cn("text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100", location === "/about" && "text-primary")} onClick={() => setIsMenuOpen(false)}>About</Link>
+          <Link href="/event" className={cn("text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100", location === "/event" && "text-primary")} onClick={() => setIsMenuOpen(false)}>Event</Link>
+          <Link href="/speakers" className={cn("text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100", location === "/speakers" && "text-primary")} onClick={() => setIsMenuOpen(false)}>Speakers</Link>
+          <Link href="/faq" className={cn("text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100", location === "/faq" && "text-primary")} onClick={() => setIsMenuOpen(false)}>FAQ</Link>
+          <Link href="/book" className="bg-primary text-white text-center py-2 rounded-full mt-2" onClick={() => setIsMenuOpen(false)}>Book Now</Link>
         </div>
       </div>
     </header>

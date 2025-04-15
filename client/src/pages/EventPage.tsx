@@ -1,14 +1,14 @@
+import EventInfo from '@/components/EventInfo';
+import EventSchedule from '@/components/EventSchedule';
 import Navbar from '@/components/Navbar';
-import Hero from '@/components/Hero';
-import Sponsors from '@/components/Sponsors';
 import Footer from '@/components/Footer';
 
-export default function Home() {
+export default function EventPage() {
   return (
     <div className="min-h-screen font-montserrat text-dark bg-light">
       <Navbar />
-      <Hero />
-      <Sponsors />
+      <EventInfo />
+      <EventSchedule />
       <Footer />
     </div>
   );

@@ -1,14 +1,12 @@
+import Speakers from '@/components/Speakers';
 import Navbar from '@/components/Navbar';
-import Hero from '@/components/Hero';
-import Sponsors from '@/components/Sponsors';
 import Footer from '@/components/Footer';
 
-export default function Home() {
+export default function SpeakersPage() {
   return (
     <div className="min-h-screen font-montserrat text-dark bg-light">
       <Navbar />
-      <Hero />
-      <Sponsors />
+      <Speakers />
       <Footer />
     </div>
   );
