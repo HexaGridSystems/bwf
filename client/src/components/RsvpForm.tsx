@@ -171,8 +171,7 @@ export default function RsvpForm() {
                 <i className="fas fa-ticket-alt text-[#F0C987] mt-1 mr-3"></i>
                 <div>
                   <p className="text-white font-semibold">Registration Fee</p>
-                  <p className="text-white text-sm">Early Bird (until Oct 15): ₹1,800</p>
-                  <p className="text-white text-sm">Regular: ₹2,500</p>
+                  <p className="text-white text-sm">₹1000 per person</p>
                 </div>
               </div>
               
@@ -350,7 +349,7 @@ export default function RsvpForm() {
                           name={registeredAttendee.name}
                           email={registeredAttendee.email}
                           phone={registeredAttendee.phone}
-                          amount={2500} // Regular price ₹2,500
+                          amount={1000} // Price ₹1000 per person
                           description="Bengaluru Wedding Fraternity Annual Event Registration"
                           onSuccess={handlePaymentSuccess}
                           onFailure={handlePaymentFailure}
