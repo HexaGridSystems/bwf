@@ -1,4 +1,6 @@
 import { attendees, contactMessages, subscribers, type InsertAttendee, type Attendee, type InsertContactMessage, type ContactMessage, type InsertSubscriber, type Subscriber } from "@shared/schema";
+import { db } from "./db";
+import { eq } from "drizzle-orm";
 
 export interface IStorage {
   // Attendee methods
@@ -120,4 +122,75 @@ export class MemStorage implements IStorage {
   }
 }
 
-export const storage = new MemStorage();
+export class DatabaseStorage implements IStorage {
+  // Attendee methods
+  async createAttendee(attendeeData: InsertAttendee): Promise<Attendee> {
+    const [attendee] = await db
+      .insert(attendees)
+      .values(attendeeData)
+      .returning();
+    return attendee;
+  }
+
+  async getAttendee(id: number): Promise<Attendee | undefined> {
+    const [attendee] = await db
+      .select()
+      .from(attendees)
+      .where(eq(attendees.id, id));
+    return attendee;
+  }
+
+  async getAttendeeByEmail(email: string): Promise<Attendee | undefined> {
+    const [attendee] = await db
+      .select()
+      .from(attendees)
+      .where(eq(attendees.email, email));
+    return attendee;
+  }
+
+  async getAllAttendees(): Promise<Attendee[]> {
+    return await db.select().from(attendees);
+  }
+
+  async getAttendeesCount(): Promise<number> {
+    const result = await db.select().from(attendees);
+    return result.length;
+  }
+
+  // Contact message methods
+  async createContactMessage(messageData: InsertContactMessage): Promise<ContactMessage> {
+    const [message] = await db
+      .insert(contactMessages)
+      .values(messageData)
+      .returning();
+    return message;
+  }
+
+  async getAllContactMessages(): Promise<ContactMessage[]> {
+    return await db.select().from(contactMessages);
+  }
+
+  // Subscriber methods
+  async createSubscriber(subscriberData: InsertSubscriber): Promise<Subscriber> {
+    const [subscriber] = await db
+      .insert(subscribers)
+      .values(subscriberData)
+      .returning();
+    return subscriber;
+  }
+
+  async getSubscriberByEmail(email: string): Promise<Subscriber | undefined> {
+    const [subscriber] = await db
+      .select()
+      .from(subscribers)
+      .where(eq(subscribers.email, email));
+    return subscriber;
+  }
+
+  async getAllSubscribers(): Promise<Subscriber[]> {
+    return await db.select().from(subscribers);
+  }
+}
+
+// Use the database storage implementation
+export const storage = new DatabaseStorage();
