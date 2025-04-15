@@ -8,6 +8,7 @@ import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import { apiRequest } from '@/lib/queryClient';
+import { Link } from 'wouter';
 
 const subscribeSchema = z.object({
   email: z.string().email('Please enter a valid email address')
@@ -16,12 +17,11 @@ const subscribeSchema = z.object({
 type SubscribeFormValues = z.infer<typeof subscribeSchema>;
 
 const quickLinks = [
-  { name: 'About BWF', href: '#about' },
-  { name: 'Event Information', href: '#event' },
-  { name: 'Speakers', href: '#speakers' },
-  { name: 'Event Schedule', href: '#schedule' },
-  { name: 'FAQs', href: '#faq' },
-  { name: 'Book Now', href: '#book' }
+  { name: 'About BWF', href: '/about' },
+  { name: 'Event Information', href: '/event' },
+  { name: 'Speakers', href: '/speakers' },
+  { name: 'FAQs', href: '/faq' },
+  { name: 'Book Now', href: '/book' }
 ];
 
 export default function Footer() {
@@ -104,9 +104,9 @@ export default function Footer() {
             <ul className="space-y-2">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <a href={link.href} className="text-white text-sm opacity-80 hover:opacity-100 hover:text-[#F0C987] transition-colors duration-300">
+                  <Link href={link.href} className="text-white text-sm opacity-80 hover:opacity-100 hover:text-[#F0C987] transition-colors duration-300">
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
