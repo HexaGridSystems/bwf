@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useMutation } from '@tanstack/react-query';
 import { z } from 'zod';
@@ -12,6 +12,8 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Button } from '@/components/ui/button';
 import { apiRequest } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
+import PaymentButton from './PaymentButton';
+import { loadRazorpayScript } from '@/lib/loadRazorpay';
 
 const formSchema = z.object({
   name: z.string().min(2, 'Name is required'),
@@ -30,6 +32,25 @@ type FormValues = z.infer<typeof formSchema>;
 export default function RsvpForm() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [registeredAttendee, setRegisteredAttendee] = useState<any>(null);
+  const [showPayment, setShowPayment] = useState(false);
+  const [razorpayLoaded, setRazorpayLoaded] = useState(false);
+
+  useEffect(() => {
+    // Load Razorpay script on component mount
+    loadRazorpayScript().then((success) => {
+      if (success) {
+        setRazorpayLoaded(true);
+      } else {
+        console.error('Failed to load Razorpay script');
+        toast({
+          title: 'Warning',
+          description: 'Payment gateway failed to load. You may need to try again later.',
+          variant: 'destructive',
+        });
+      }
+    });
+  }, [toast]);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -50,13 +71,23 @@ export default function RsvpForm() {
       const response = await apiRequest('POST', '/api/register', formData);
       return response.json();
     },
-    onSuccess: () => {
-      toast({
-        title: "Registration Successful",
-        description: "Thank you for registering! We look forward to seeing you at the event.",
-        variant: "default",
-      });
-      form.reset();
+    onSuccess: (data) => {
+      if (data.success) {
+        setRegisteredAttendee(data.data);
+        setShowPayment(true);
+        toast({
+          title: "Registration Successful",
+          description: "Thank you for registering! Please proceed with payment to confirm your spot.",
+          variant: "default",
+        });
+      } else {
+        toast({
+          title: "Registration Failed",
+          description: data.message || "There was an error submitting your registration. Please try again.",
+          variant: "destructive",
+        });
+        setIsSubmitting(false);
+      }
     },
     onError: (error) => {
       console.error(error);
@@ -65,8 +96,6 @@ export default function RsvpForm() {
         description: "There was an error submitting your registration. Please try again.",
         variant: "destructive",
       });
-    },
-    onSettled: () => {
       setIsSubmitting(false);
     }
   });
@@ -74,6 +103,28 @@ export default function RsvpForm() {
   function onSubmit(data: FormValues) {
     setIsSubmitting(true);
     registerMutation.mutate(data);
+  }
+  
+  function handlePaymentSuccess() {
+    toast({
+      title: "Payment Successful",
+      description: "Your payment has been processed successfully. Looking forward to seeing you at the event!",
+      variant: "default",
+    });
+    // Reset form and state after successful payment
+    form.reset();
+    setRegisteredAttendee(null);
+    setShowPayment(false);
+    setIsSubmitting(false);
+  }
+  
+  function handlePaymentFailure() {
+    toast({
+      title: "Payment Failed",
+      description: "Your spot is reserved, but the payment was not completed. You can try again later.",
+      variant: "destructive",
+    });
+    setIsSubmitting(false);
   }
 
   return (
@@ -286,13 +337,42 @@ export default function RsvpForm() {
                     )}
                   />
                   
-                  <Button 
-                    type="submit" 
-                    disabled={isSubmitting}
-                    className="w-full bg-primary hover:bg-opacity-90 text-white py-3 rounded-full transition-colors duration-300"
-                  >
-                    {isSubmitting ? 'Processing...' : 'Book & Pay Now'}
-                  </Button>
+                  {showPayment && registeredAttendee ? (
+                    <div className="space-y-4">
+                      <div className="p-4 bg-green-50 border border-green-200 rounded-md">
+                        <p className="text-green-700 text-sm">
+                          Registration successful! Please complete your payment to secure your spot.
+                        </p>
+                      </div>
+                      {razorpayLoaded ? (
+                        <PaymentButton
+                          attendeeId={registeredAttendee.id}
+                          name={registeredAttendee.name}
+                          email={registeredAttendee.email}
+                          phone={registeredAttendee.phone}
+                          amount={2500} // Regular price ₹2,500
+                          description="Bengaluru Wedding Fraternity Annual Event Registration"
+                          onSuccess={handlePaymentSuccess}
+                          onFailure={handlePaymentFailure}
+                        />
+                      ) : (
+                        <Button 
+                          disabled={true}
+                          className="w-full bg-primary hover:bg-opacity-90 text-white py-3 rounded-full transition-colors duration-300"
+                        >
+                          Loading Payment Gateway...
+                        </Button>
+                      )}
+                    </div>
+                  ) : (
+                    <Button 
+                      type="submit" 
+                      disabled={isSubmitting}
+                      className="w-full bg-primary hover:bg-opacity-90 text-white py-3 rounded-full transition-colors duration-300"
+                    >
+                      {isSubmitting ? 'Processing...' : 'Book & Pay Now'}
+                    </Button>
+                  )}
                   
                   <p className="text-xs text-gray-500 text-center mt-4">
                     Fields marked with * are required
