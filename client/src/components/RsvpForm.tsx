@@ -77,7 +77,7 @@ export default function RsvpForm() {
   }
 
   return (
-    <section id="rsvp" className="py-16 md:py-24">
+    <section id="book" className="py-16 md:py-24">
       <div className="container mx-auto px-4">
         <motion.div 
           className="max-w-3xl mx-auto text-center mb-12"
@@ -87,10 +87,10 @@ export default function RsvpForm() {
           transition={{ duration: 0.6 }}
         >
           <span className="font-['Great_Vibes'] text-primary text-3xl">Join Us</span>
-          <h2 className="font-['Playfair_Display'] text-[#1E3D59] text-3xl md:text-4xl font-bold mt-2 mb-6">Reserve Your Spot</h2>
+          <h2 className="font-['Playfair_Display'] text-[#1E3D59] text-3xl md:text-4xl font-bold mt-2 mb-6">Book Your Spot</h2>
           <div className="w-20 h-1 bg-[#F0C987] mx-auto mb-6"></div>
           <p className="text-gray-600 leading-relaxed">
-            Secure your place at the Bengaluru Wedding Fraternity Annual Event. Limited seats available, register today!
+            Secure your place at the Bengaluru Wedding Fraternity Annual Event. Limited seats available, book today!
           </p>
         </motion.div>
         
@@ -146,7 +146,7 @@ export default function RsvpForm() {
             <div className="p-8">
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                  <h3 className="font-['Playfair_Display'] text-[#1E3D59] text-2xl font-semibold mb-4">Register Now</h3>
+                  <h3 className="font-['Playfair_Display'] text-[#1E3D59] text-2xl font-semibold mb-4">Book Now</h3>
                   
                   <FormField
                     control={form.control}
@@ -290,7 +290,7 @@ export default function RsvpForm() {
                     disabled={isSubmitting}
                     className="w-full bg-primary hover:bg-opacity-90 text-white py-3 rounded-full transition-colors duration-300"
                   >
-                    {isSubmitting ? 'Processing...' : 'Register & Pay Now'}
+                    {isSubmitting ? 'Processing...' : 'Book & Pay Now'}
                   </Button>
                   
                   <p className="text-xs text-gray-500 text-center mt-4">

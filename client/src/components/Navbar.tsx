@@ -48,7 +48,7 @@ export default function Navbar() {
           <a href="#speakers" className="text-[#1E3D59] hover:text-primary transition-colors duration-300">Speakers</a>
           <a href="#gallery" className="text-[#1E3D59] hover:text-primary transition-colors duration-300">Gallery</a>
           <a href="#faq" className="text-[#1E3D59] hover:text-primary transition-colors duration-300">FAQ</a>
-          <a href="#rsvp" className="bg-primary hover:bg-opacity-90 text-white px-6 py-2 rounded-full transition-colors duration-300">RSVP Now</a>
+          <a href="#book" className="bg-primary hover:bg-opacity-90 text-white px-6 py-2 rounded-full transition-colors duration-300">Book Now</a>
         </nav>
         
         {/* Mobile Menu Button */}
@@ -72,7 +72,7 @@ export default function Navbar() {
           <a href="#speakers" className="text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>Speakers</a>
           <a href="#gallery" className="text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>Gallery</a>
           <a href="#faq" className="text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>FAQ</a>
-          <a href="#rsvp" className="bg-primary text-white text-center py-2 rounded-full mt-2" onClick={() => setIsMenuOpen(false)}>RSVP Now</a>
+          <a href="#book" className="bg-primary text-white text-center py-2 rounded-full mt-2" onClick={() => setIsMenuOpen(false)}>Book Now</a>
         </div>
       </div>
     </header>

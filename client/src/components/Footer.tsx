@@ -22,7 +22,7 @@ const quickLinks = [
   { name: 'Event Schedule', href: '#schedule' },
   { name: 'Gallery', href: '#gallery' },
   { name: 'FAQs', href: '#faq' },
-  { name: 'Register Now', href: '#rsvp' }
+  { name: 'Book Now', href: '#book' }
 ];
 
 export default function Footer() {
