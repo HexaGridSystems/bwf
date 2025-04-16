@@ -114,7 +114,7 @@ export default function PaymentButton({
 
   const initiatePayment = (order: any) => {
     const options = {
-      key: import.meta.env.VITE_RAZORPAY_KEY_ID || 'rzp_test_1QDacirIxfYGdY',
+      key: 'rzp_test_1QDacirIxfYGdY', // Directly using the key for troubleshooting purposes
       amount: order.amount,
       currency: order.currency,
       name: 'Bengaluru Wedding Fraternity',
