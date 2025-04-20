@@ -8,23 +8,37 @@ export default function Navbar() {
   const [location] = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
+    // Only run this effect in browser environment
+    if (typeof window === 'undefined') return;
 
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    try {
+      const handleScroll = () => {
+        try {
+          if (window.scrollY > 50) {
+            setIsScrolled(true);
+          } else {
+            setIsScrolled(false);
+          }
+        } catch (error) {
+          console.error("Error in scroll handler:", error);
+        }
+      };
+
+      window.addEventListener('scroll', handleScroll);
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    } catch (error) {
+      console.error("Error setting up scroll listener:", error);
+    }
   }, []);
 
   // Scroll to top whenever location changes
   useEffect(() => {
-    scrollToTop();
+    // Make sure window exists (prevents SSR issues)
+    if (typeof window !== 'undefined') {
+      scrollToTop();
+    }
   }, [location]);
 
   const toggleMenu = () => {
@@ -33,7 +47,13 @@ export default function Navbar() {
   
   // Function to scroll to top immediately (no smooth scrolling)
   const scrollToTop = () => {
-    window.scrollTo(0, 0);
+    try {
+      if (typeof window !== 'undefined') {
+        window.scrollTo(0, 0);
+      }
+    } catch (error) {
+      console.error("Error scrolling to top:", error);
+    }
   };
 
   return (
@@ -67,23 +87,23 @@ export default function Navbar() {
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="md:hidden text-[#1E3D59] focus:outline-none z-10"
         >
-          <i className={`fas ${isMenuOpen ? 'fa-times' : 'fa-bars'} text-2xl`}></i>
+          {/* Simple text instead of FontAwesome */}
+          <span className="text-2xl">{isMenuOpen ? '✕' : '☰'}</span>
         </button>
       </div>
       
       {/* Mobile Navigation */}
-      <div className={cn(
-        "md:hidden bg-white w-full animate-fadeIn transition-all duration-300",
-        isMenuOpen ? "opacity-100 max-h-80" : "opacity-0 max-h-0 overflow-hidden"
-      )}>
-        <div className="container mx-auto px-4 py-2 flex flex-col space-y-4">
-          <Link href="/" className={cn("text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100", location === "/" && "text-primary")} onClick={() => {setIsMenuOpen(false); scrollToTop();}}>Home</Link>
-          <Link href="/about" className={cn("text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100", location === "/about" && "text-primary")} onClick={() => {setIsMenuOpen(false); scrollToTop();}}>About</Link>
-          <Link href="/event" className={cn("text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100", location === "/event" && "text-primary")} onClick={() => {setIsMenuOpen(false); scrollToTop();}}>Event</Link>
-          <Link href="/speakers" className={cn("text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100", location === "/speakers" && "text-primary")} onClick={() => {setIsMenuOpen(false); scrollToTop();}}>Speakers</Link>
-          <Link href="/book" className="bg-primary text-white text-center py-2 rounded-full mt-2" onClick={() => {setIsMenuOpen(false); scrollToTop();}}>Book Now</Link>
+      {isMenuOpen && (
+        <div className="md:hidden bg-white w-full shadow-md">
+          <div className="container mx-auto px-4 py-2 flex flex-col space-y-4">
+            <Link href="/" className={cn("text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100", location === "/" && "text-primary")} onClick={() => {setIsMenuOpen(false); scrollToTop();}}>Home</Link>
+            <Link href="/about" className={cn("text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100", location === "/about" && "text-primary")} onClick={() => {setIsMenuOpen(false); scrollToTop();}}>About</Link>
+            <Link href="/event" className={cn("text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100", location === "/event" && "text-primary")} onClick={() => {setIsMenuOpen(false); scrollToTop();}}>Event</Link>
+            <Link href="/speakers" className={cn("text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100", location === "/speakers" && "text-primary")} onClick={() => {setIsMenuOpen(false); scrollToTop();}}>Speakers</Link>
+            <Link href="/book" className="bg-primary text-white text-center py-2 rounded-full mt-2" onClick={() => {setIsMenuOpen(false); scrollToTop();}}>Book Now</Link>
+          </div>
         </div>
-      </div>
+      )}
     </header>
   );
 }
