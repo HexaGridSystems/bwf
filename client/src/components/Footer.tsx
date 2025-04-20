@@ -17,6 +17,7 @@ const subscribeSchema = z.object({
 type SubscribeFormValues = z.infer<typeof subscribeSchema>;
 
 const quickLinks = [
+  { name: 'Home', href: '/' },
   { name: 'About BWF', href: '/about' },
   { name: 'Event Information', href: '/event' },
   { name: 'Speakers', href: '/speakers' },

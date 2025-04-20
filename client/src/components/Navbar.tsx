@@ -44,6 +44,7 @@ export default function Navbar() {
         
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
+          <Link href="/" className={cn("text-[#1E3D59] hover:text-primary transition-colors duration-300", location === "/" && "text-primary")}>Home</Link>
           <Link href="/about" className={cn("text-[#1E3D59] hover:text-primary transition-colors duration-300", location === "/about" && "text-primary")}>About</Link>
           <Link href="/event" className={cn("text-[#1E3D59] hover:text-primary transition-colors duration-300", location === "/event" && "text-primary")}>Event</Link>
           <Link href="/speakers" className={cn("text-[#1E3D59] hover:text-primary transition-colors duration-300", location === "/speakers" && "text-primary")}>Speakers</Link>
@@ -66,6 +67,7 @@ export default function Navbar() {
         isMenuOpen ? "opacity-100 max-h-80" : "opacity-0 max-h-0 overflow-hidden"
       )}>
         <div className="container mx-auto px-4 py-2 flex flex-col space-y-4">
+          <Link href="/" className={cn("text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100", location === "/" && "text-primary")} onClick={() => setIsMenuOpen(false)}>Home</Link>
           <Link href="/about" className={cn("text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100", location === "/about" && "text-primary")} onClick={() => setIsMenuOpen(false)}>About</Link>
           <Link href="/event" className={cn("text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100", location === "/event" && "text-primary")} onClick={() => setIsMenuOpen(false)}>Event</Link>
           <Link href="/speakers" className={cn("text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100", location === "/speakers" && "text-primary")} onClick={() => setIsMenuOpen(false)}>Speakers</Link>
