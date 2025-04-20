@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { cn } from "@/lib/utils";
-import { Link, useLocation } from "wouter";
+import { useLocation } from "wouter";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,10 +45,10 @@ export default function Navbar() {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
           <a href="/" className={cn("text-[#1E3D59] hover:text-primary transition-colors duration-300", location === "/" && "text-primary")}>Home</a>
-          <Link href="/about" className={cn("text-[#1E3D59] hover:text-primary transition-colors duration-300", location === "/about" && "text-primary")}>About</Link>
-          <Link href="/event" className={cn("text-[#1E3D59] hover:text-primary transition-colors duration-300", location === "/event" && "text-primary")}>Event</Link>
-          <Link href="/speakers" className={cn("text-[#1E3D59] hover:text-primary transition-colors duration-300", location === "/speakers" && "text-primary")}>Speakers</Link>
-          <Link href="/book" className="bg-primary hover:bg-opacity-90 text-white px-6 py-2 rounded-full transition-colors duration-300">Book Now</Link>
+          <a href="/about" className={cn("text-[#1E3D59] hover:text-primary transition-colors duration-300", location === "/about" && "text-primary")}>About</a>
+          <a href="/event" className={cn("text-[#1E3D59] hover:text-primary transition-colors duration-300", location === "/event" && "text-primary")}>Event</a>
+          <a href="/speakers" className={cn("text-[#1E3D59] hover:text-primary transition-colors duration-300", location === "/speakers" && "text-primary")}>Speakers</a>
+          <a href="/book" className="bg-primary hover:bg-opacity-90 text-white px-6 py-2 rounded-full transition-colors duration-300">Book Now</a>
         </nav>
         
         {/* Mobile Menu Button */}
@@ -68,10 +68,10 @@ export default function Navbar() {
       )}>
         <div className="container mx-auto px-4 py-2 flex flex-col space-y-4">
           <a href="/" className={cn("text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100", location === "/" && "text-primary")} onClick={() => setIsMenuOpen(false)}>Home</a>
-          <Link href="/about" className={cn("text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100", location === "/about" && "text-primary")} onClick={() => setIsMenuOpen(false)}>About</Link>
-          <Link href="/event" className={cn("text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100", location === "/event" && "text-primary")} onClick={() => setIsMenuOpen(false)}>Event</Link>
-          <Link href="/speakers" className={cn("text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100", location === "/speakers" && "text-primary")} onClick={() => setIsMenuOpen(false)}>Speakers</Link>
-          <Link href="/book" className="bg-primary text-white text-center py-2 rounded-full mt-2" onClick={() => setIsMenuOpen(false)}>Book Now</Link>
+          <a href="/about" className={cn("text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100", location === "/about" && "text-primary")} onClick={() => setIsMenuOpen(false)}>About</a>
+          <a href="/event" className={cn("text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100", location === "/event" && "text-primary")} onClick={() => setIsMenuOpen(false)}>Event</a>
+          <a href="/speakers" className={cn("text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100", location === "/speakers" && "text-primary")} onClick={() => setIsMenuOpen(false)}>Speakers</a>
+          <a href="/book" className="bg-primary text-white text-center py-2 rounded-full mt-2" onClick={() => setIsMenuOpen(false)}>Book Now</a>
         </div>
       </div>
     </header>
