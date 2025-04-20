@@ -47,7 +47,7 @@ export default function Hero() {
         
         <div className="mt-12 md:mt-16 flex flex-col items-center">
           <p className="text-white text-lg mb-4">Event Starts In</p>
-          <CountdownTimer targetDate="November 15, 2025 09:00:00" />
+          <CountdownTimer targetDate="May 15, 2025 09:00:00" />
         </div>
       </motion.div>
       
