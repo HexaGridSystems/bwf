@@ -146,239 +146,191 @@ export default function RsvpForm() {
         </motion.div>
         
         <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
-          <div className="grid grid-cols-1 md:grid-cols-2">
-            <div className="p-8 bg-[#1E3D59]">
-              <h3 className="font-['Playfair_Display'] text-white text-2xl font-semibold mb-4">Event Details</h3>
-              <div className="flex items-start mb-4">
-                <i className="fas fa-calendar-alt text-[#F0C987] mt-1 mr-3"></i>
-                <div>
-                  <p className="text-white font-semibold">Date & Time</p>
-                  <p className="text-white text-sm">November 15, 2023</p>
-                  <p className="text-white text-sm">9:00 AM - 6:00 PM</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start mb-4">
-                <i className="fas fa-map-marker-alt text-[#F0C987] mt-1 mr-3"></i>
-                <div>
-                  <p className="text-white font-semibold">Venue</p>
-                  <p className="text-white text-sm">The Grand Pavilion</p>
-                  <p className="text-white text-sm">Whitefield, Bengaluru</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start mb-6">
-                <i className="fas fa-ticket-alt text-[#F0C987] mt-1 mr-3"></i>
-                <div>
-                  <p className="text-white font-semibold">Registration Fee</p>
-                  <p className="text-white text-sm">₹1000 per person</p>
-                </div>
-              </div>
-              
-              <div className="border-t border-[#1E3D59]/30 pt-6">
-                <p className="text-white text-sm italic mb-4">
-                  "This event helped me connect with some amazing wedding professionals. Highly recommended for anyone in the industry."
-                </p>
-                <div className="flex items-center">
-                  <img 
-                    src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" 
-                    alt="Testimonial" 
-                    className="w-10 h-10 rounded-full object-cover mr-3"
-                  />
-                  <div>
-                    <p className="text-white text-sm font-semibold">Ravi Kumar</p>
-                    <p className="text-white text-xs opacity-70">Wedding Photographer</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="p-8">
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                  <h3 className="font-['Playfair_Display'] text-[#1E3D59] text-2xl font-semibold mb-4">Book Now</h3>
-                  
-                  <FormField
-                    control={form.control}
-                    name="name"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-gray-700 text-sm font-medium">Full Name*</FormLabel>
-                        <FormControl>
-                          <Input 
-                            {...field} 
-                            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" 
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  
-                  <FormField
-                    control={form.control}
-                    name="company"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-gray-700 text-sm font-medium">Company/Business Name*</FormLabel>
-                        <FormControl>
-                          <Input 
-                            {...field} 
-                            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" 
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-gray-700 text-sm font-medium">Email Address*</FormLabel>
-                        <FormControl>
-                          <Input 
-                            {...field} 
-                            type="email"
-                            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" 
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  
-                  <FormField
-                    control={form.control}
-                    name="phone"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-gray-700 text-sm font-medium">Phone Number*</FormLabel>
-                        <FormControl>
-                          <Input 
-                            {...field} 
-                            type="tel"
-                            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" 
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  
-                  <FormField
-                    control={form.control}
-                    name="role"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-gray-700 text-sm font-medium">Your Role in Wedding Industry*</FormLabel>
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
-                          <FormControl>
-                            <SelectTrigger className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                              <SelectValue placeholder="Select your role" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            <SelectItem value="photographer">Photographer</SelectItem>
-                            <SelectItem value="planner">Wedding Planner</SelectItem>
-                            <SelectItem value="decorator">Decorator/Designer</SelectItem>
-                            <SelectItem value="venue">Venue Manager</SelectItem>
-                            <SelectItem value="caterer">Caterer</SelectItem>
-                            <SelectItem value="fashion">Bridal Fashion</SelectItem>
-                            <SelectItem value="makeup">Makeup Artist</SelectItem>
-                            <SelectItem value="other">Other</SelectItem>
-                          </SelectContent>
-                        </Select>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  
-                  <FormField
-                    control={form.control}
-                    name="expectations"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-gray-700 text-sm font-medium">What do you hope to learn or achieve at this event?</FormLabel>
-                        <FormControl>
-                          <Textarea 
-                            {...field} 
-                            value={field.value || ''} 
-                            rows={3}
-                            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" 
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  
-                  <FormField
-                    control={form.control}
-                    name="terms"
-                    render={({ field }) => (
-                      <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-                        <FormControl>
-                          <Checkbox
-                            checked={field.value}
-                            onCheckedChange={field.onChange}
-                          />
-                        </FormControl>
-                        <div className="space-y-1 leading-none">
-                          <FormLabel className="text-gray-700 text-sm">
-                            I agree to the <a href="#" className="text-primary hover:underline">terms and conditions</a> and <a href="#" className="text-primary hover:underline">privacy policy</a>.*
-                          </FormLabel>
-                          <FormMessage />
-                        </div>
-                      </FormItem>
-                    )}
-                  />
-                  
-                  {showPayment && registeredAttendee ? (
-                    <div className="space-y-4">
-                      <div className="p-4 bg-green-50 border border-green-200 rounded-md">
-                        <p className="text-green-700 text-sm">
-                          Registration successful! Please complete your payment to secure your spot.
-                        </p>
-                      </div>
-                      {razorpayLoaded ? (
-                        <PaymentButton
-                          attendeeId={registeredAttendee.id}
-                          name={registeredAttendee.name}
-                          email={registeredAttendee.email}
-                          phone={registeredAttendee.phone}
-                          amount={1000} // Price ₹1000 per person
-                          description="Bengaluru Wedding Fraternity Annual Event Registration"
-                          onSuccess={handlePaymentSuccess}
-                          onFailure={handlePaymentFailure}
+          <div className="p-8">
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                <h3 className="font-['Playfair_Display'] text-[#1E3D59] text-2xl font-semibold mb-4">Book Now</h3>
+                
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-gray-700 text-sm font-medium">Full Name*</FormLabel>
+                      <FormControl>
+                        <Input 
+                          {...field} 
+                          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" 
                         />
-                      ) : (
-                        <Button 
-                          disabled={true}
-                          className="w-full bg-primary hover:bg-opacity-90 text-white py-3 rounded-full transition-colors duration-300"
-                        >
-                          Loading Payment Gateway...
-                        </Button>
-                      )}
-                    </div>
-                  ) : (
-                    <Button 
-                      type="submit" 
-                      disabled={isSubmitting}
-                      className="w-full bg-primary hover:bg-opacity-90 text-white py-3 rounded-full transition-colors duration-300"
-                    >
-                      {isSubmitting ? 'Processing...' : 'Book & Pay Now'}
-                    </Button>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
                   )}
-                  
-                  <p className="text-xs text-gray-500 text-center mt-4">
-                    Fields marked with * are required
-                  </p>
-                </form>
-              </Form>
-            </div>
+                />
+                
+                <FormField
+                  control={form.control}
+                  name="company"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-gray-700 text-sm font-medium">Company/Business Name*</FormLabel>
+                      <FormControl>
+                        <Input 
+                          {...field} 
+                          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" 
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-gray-700 text-sm font-medium">Email Address*</FormLabel>
+                      <FormControl>
+                        <Input 
+                          {...field} 
+                          type="email"
+                          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" 
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                <FormField
+                  control={form.control}
+                  name="phone"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-gray-700 text-sm font-medium">Phone Number*</FormLabel>
+                      <FormControl>
+                        <Input 
+                          {...field} 
+                          type="tel"
+                          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" 
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                <FormField
+                  control={form.control}
+                  name="role"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-gray-700 text-sm font-medium">Your Role in Wedding Industry*</FormLabel>
+                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <FormControl>
+                          <SelectTrigger className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            <SelectValue placeholder="Select your role" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          <SelectItem value="photographer">Photographer</SelectItem>
+                          <SelectItem value="planner">Wedding Planner</SelectItem>
+                          <SelectItem value="decorator">Decorator/Designer</SelectItem>
+                          <SelectItem value="venue">Venue Manager</SelectItem>
+                          <SelectItem value="caterer">Caterer</SelectItem>
+                          <SelectItem value="fashion">Bridal Fashion</SelectItem>
+                          <SelectItem value="makeup">Makeup Artist</SelectItem>
+                          <SelectItem value="other">Other</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                <FormField
+                  control={form.control}
+                  name="expectations"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-gray-700 text-sm font-medium">What do you hope to learn or achieve at this event?</FormLabel>
+                      <FormControl>
+                        <Textarea 
+                          {...field} 
+                          value={field.value || ''} 
+                          rows={3}
+                          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" 
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                <FormField
+                  control={form.control}
+                  name="terms"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                      <FormControl>
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                      </FormControl>
+                      <div className="space-y-1 leading-none">
+                        <FormLabel className="text-gray-700 text-sm">
+                          I agree to the <a href="#" className="text-primary hover:underline">terms and conditions</a> and <a href="#" className="text-primary hover:underline">privacy policy</a>.*
+                        </FormLabel>
+                        <FormMessage />
+                      </div>
+                    </FormItem>
+                  )}
+                />
+                
+                {showPayment && registeredAttendee ? (
+                  <div className="space-y-4">
+                    <div className="p-4 bg-green-50 border border-green-200 rounded-md">
+                      <p className="text-green-700 text-sm">
+                        Registration successful! Please complete your payment to secure your spot.
+                      </p>
+                    </div>
+                    {razorpayLoaded ? (
+                      <PaymentButton
+                        attendeeId={registeredAttendee.id}
+                        name={registeredAttendee.name}
+                        email={registeredAttendee.email}
+                        phone={registeredAttendee.phone}
+                        amount={1000} // Price ₹1000 per person
+                        description="Bengaluru Wedding Fraternity Annual Event Registration"
+                        onSuccess={handlePaymentSuccess}
+                        onFailure={handlePaymentFailure}
+                      />
+                    ) : (
+                      <Button 
+                        disabled={true}
+                        className="w-full bg-primary hover:bg-opacity-90 text-white py-3 rounded-full transition-colors duration-300"
+                      >
+                        Loading Payment Gateway...
+                      </Button>
+                    )}
+                  </div>
+                ) : (
+                  <Button 
+                    type="submit" 
+                    disabled={isSubmitting}
+                    className="w-full bg-primary hover:bg-opacity-90 text-white py-3 rounded-full transition-colors duration-300"
+                  >
+                    {isSubmitting ? 'Processing...' : 'Book & Pay Now'}
+                  </Button>
+                )}
+                
+                <p className="text-xs text-gray-500 text-center mt-4">
+                  Fields marked with * are required
+                </p>
+              </form>
+            </Form>
           </div>
         </div>
       </div>
