@@ -16,13 +16,7 @@ const subscribeSchema = z.object({
 
 type SubscribeFormValues = z.infer<typeof subscribeSchema>;
 
-const quickLinks = [
-  { name: 'Home', href: '/' },
-  { name: 'About BWF', href: '/about' },
-  { name: 'Event Information', href: '/event' },
-  { name: 'Speakers', href: '/speakers' },
-  { name: 'Book Now', href: '/book' }
-];
+// Quick Links removed as requested
 
 export default function Footer() {
   const { toast } = useToast();
@@ -69,7 +63,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#1E3D59] text-white pt-16 pb-8">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           <div>
             <div className="flex items-center mb-4">
               <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center mr-3">
@@ -97,19 +91,6 @@ export default function Footer() {
                 <i className="fab fa-twitter"></i>
               </a>
             </div>
-          </div>
-          
-          <div>
-            <h4 className="font-['Playfair_Display'] text-white text-lg font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              {quickLinks.map((link, index) => (
-                <li key={index}>
-                  <Link href={link.href} className="text-white text-sm opacity-80 hover:opacity-100 hover:text-[#F0C987] transition-colors duration-300">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
           </div>
           
           <div>
