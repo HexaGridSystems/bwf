@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import CountdownTimer from './CountdownTimer';
+import { Link } from 'wouter';
 
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -41,7 +42,7 @@ export default function Hero() {
         <p className="text-white text-lg md:text-xl max-w-2xl mb-8">Annual Networking Event for Wedding Professionals</p>
         
         <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-          <a href="#book" className="bg-primary hover:bg-opacity-90 text-white px-8 py-3 rounded-full text-lg transition-colors duration-300">Book Now</a>
+          <Link href="/book" className="bg-primary hover:bg-opacity-90 text-white px-8 py-3 rounded-full text-lg transition-colors duration-300">Book Now</Link>
         </div>
         
         <div className="mt-12 md:mt-16 flex flex-col items-center">
@@ -51,9 +52,9 @@ export default function Hero() {
       </motion.div>
       
       <div className="absolute bottom-0 left-0 right-0 z-20 flex justify-center pb-6">
-        <a href="#about" className="text-white animate-bounce">
+        <Link href="/about" className="text-white animate-bounce">
           <i className="fas fa-chevron-down text-2xl"></i>
-        </a>
+        </Link>
       </div>
     </section>
   );
