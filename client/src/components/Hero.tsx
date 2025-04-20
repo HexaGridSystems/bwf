@@ -38,7 +38,7 @@ export default function Hero() {
         transition={{ duration: 0.8 }}
       >
         <span className="font-['Great_Vibes'] text-[#F0C987] text-3xl md:text-4xl mb-2">Welcome to the</span>
-        <h1 className="font-['Playfair_Display'] text-white text-4xl md:text-6xl font-bold mb-4">Bengaluru Wedding <br className="hidden sm:block" /> Fraternity</h1>
+        <h1 className="font-['Playfair_Display'] text-white text-4xl md:text-6xl font-bold mb-4">Bengaluru Wedding <br className="hidden sm:block" /> Fraternity 2025</h1>
         <p className="text-white text-lg md:text-xl max-w-2xl mb-8">Annual Networking Event for Wedding Professionals</p>
         
         <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
@@ -47,7 +47,7 @@ export default function Hero() {
         
         <div className="mt-12 md:mt-16 flex flex-col items-center">
           <p className="text-white text-lg mb-4">Event Starts In</p>
-          <CountdownTimer targetDate="November 15, 2023 09:00:00" />
+          <CountdownTimer targetDate="November 15, 2025 09:00:00" />
         </div>
       </motion.div>
       
