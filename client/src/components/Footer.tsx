@@ -27,18 +27,18 @@ export default function Footer() {
           </div>
           
           <div className="md:flex-1 flex flex-col items-center md:items-start text-center md:text-left w-full">
-            <h4 className="font-['Playfair_Display'] text-white text-xl font-semibold mb-6">Contact Us</h4>
-            <ul className="space-y-5 w-full max-w-xs">
+            <h4 className="font-['Playfair_Display'] text-white text-xl font-semibold mb-5">Contact Us</h4>
+            <ul className="space-y-3 w-full max-w-xs">
               <li className="flex items-start justify-center md:justify-start">
-                <i className="fas fa-envelope text-[#F0C987] text-lg mt-1 mr-4"></i>
+                <i className="fas fa-envelope text-[#F0C987] text-lg mt-0.5 mr-3"></i>
                 <span className="text-white text-base opacity-80">info@bengaluruweddings.org</span>
               </li>
               <li className="flex items-start justify-center md:justify-start">
-                <i className="fas fa-phone-alt text-[#F0C987] text-lg mt-1 mr-4"></i>
+                <i className="fas fa-phone-alt text-[#F0C987] text-lg mt-0.5 mr-3"></i>
                 <span className="text-white text-base opacity-80">+91 80 1234 5678</span>
               </li>
               <li className="flex items-start justify-center md:justify-start">
-                <i className="fas fa-map-marker-alt text-[#F0C987] text-lg mt-1 mr-4"></i>
+                <i className="fas fa-map-marker-alt text-[#F0C987] text-lg mt-0.5 mr-3"></i>
                 <span className="text-white text-base opacity-80 text-center md:text-left">
                   123 Wedding Boulevard<br />
                   Whitefield, Bengaluru 560066
