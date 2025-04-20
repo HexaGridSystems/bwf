@@ -68,10 +68,44 @@ export default function RsvpForm() {
     },
   });
 
+  // Verify payment mutation
+  const verifyPaymentMutation = useMutation({
+    mutationFn: async (data: any) => {
+      const response = await apiRequest('POST', '/api/payment/verify', data);
+      return response.json();
+    },
+    onSuccess: (data) => {
+      if (data.success) {
+        toast({
+          title: 'Registration Complete',
+          description: 'Thank you! Your registration and payment have been processed successfully.',
+          variant: 'default',
+        });
+        form.reset();
+      } else {
+        toast({
+          title: 'Payment Verification Failed',
+          description: data.message || 'Unable to verify payment',
+          variant: 'destructive',
+        });
+      }
+      setIsSubmitting(false);
+    },
+    onError: (error) => {
+      console.error('Error verifying payment:', error);
+      toast({
+        title: 'Payment Verification Failed',
+        description: 'Unable to verify your payment. Please contact support.',
+        variant: 'destructive',
+      });
+      setIsSubmitting(false);
+    },
+  });
+
   // Function to initiate Razorpay payment
   const initiatePayment = (attendee: any, order: any) => {
     const options = {
-      key: 'rzp_test_1QDacirIxfYGdY', // Directly using the key for troubleshooting purposes
+      key: 'rzp_test_1QDacirIxfYGdY', // Directly using the key for testing
       amount: order.amount,
       currency: order.currency,
       name: 'Bengaluru Wedding Fraternity',
@@ -122,40 +156,6 @@ export default function RsvpForm() {
       setIsSubmitting(false);
     }
   };
-
-  // Verify payment mutation
-  const verifyPaymentMutation = useMutation({
-    mutationFn: async (data: any) => {
-      const response = await apiRequest('POST', '/api/payment/verify', data);
-      return response.json();
-    },
-    onSuccess: (data) => {
-      if (data.success) {
-        toast({
-          title: 'Registration Complete',
-          description: 'Thank you! Your registration and payment have been processed successfully.',
-          variant: 'default',
-        });
-        form.reset();
-      } else {
-        toast({
-          title: 'Payment Verification Failed',
-          description: data.message || 'Unable to verify payment',
-          variant: 'destructive',
-        });
-      }
-      setIsSubmitting(false);
-    },
-    onError: (error) => {
-      console.error('Error verifying payment:', error);
-      toast({
-        title: 'Payment Verification Failed',
-        description: 'Unable to verify your payment. Please contact support.',
-        variant: 'destructive',
-      });
-      setIsSubmitting(false);
-    },
-  });
 
   const registerAndPayMutation = useMutation({
     mutationFn: async (data: FormValues) => {
