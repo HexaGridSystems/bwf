@@ -1,69 +1,11 @@
-import { useState } from 'react';
-import { useMutation } from '@tanstack/react-query';
-import { z } from 'zod';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Button } from '@/components/ui/button';
-import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { useToast } from '@/hooks/use-toast';
-import { apiRequest } from '@/lib/queryClient';
 import { Link } from 'wouter';
 
-const subscribeSchema = z.object({
-  email: z.string().email('Please enter a valid email address')
-});
-
-type SubscribeFormValues = z.infer<typeof subscribeSchema>;
-
-// Quick Links removed as requested
-
 export default function Footer() {
-  const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const form = useForm<SubscribeFormValues>({
-    resolver: zodResolver(subscribeSchema),
-    defaultValues: {
-      email: ''
-    }
-  });
-
-  const subscribeMutation = useMutation({
-    mutationFn: async (data: SubscribeFormValues) => {
-      const response = await apiRequest('POST', '/api/subscribe', data);
-      return response.json();
-    },
-    onSuccess: () => {
-      toast({
-        title: "Successfully Subscribed",
-        description: "Thank you for subscribing to our newsletter!",
-        variant: "default",
-      });
-      form.reset();
-    },
-    onError: (error) => {
-      console.error(error);
-      toast({
-        title: "Subscription Failed",
-        description: "There was an error subscribing to the newsletter. Please try again.",
-        variant: "destructive",
-      });
-    },
-    onSettled: () => {
-      setIsSubmitting(false);
-    }
-  });
-
-  function onSubmit(data: SubscribeFormValues) {
-    setIsSubmitting(true);
-    subscribeMutation.mutate(data);
-  }
 
   return (
     <footer className="bg-[#1E3D59] text-white pt-16 pb-8">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           <div>
             <div className="flex items-center mb-4">
               <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center mr-3">
@@ -103,42 +45,6 @@ export default function Footer() {
                 </span>
               </li>
             </ul>
-          </div>
-          
-          <div>
-            <h4 className="font-['Playfair_Display'] text-white text-lg font-semibold mb-4">Stay Updated</h4>
-            <p className="text-white text-sm opacity-80 mb-4">
-              Subscribe to our newsletter to receive updates about upcoming events and industry news.
-            </p>
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="flex mb-4">
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem className="w-full">
-                      <FormControl>
-                        <Input
-                          {...field}
-                          placeholder="Your email address"
-                          className="px-4 py-2 rounded-l-md w-full focus:outline-none text-[#1E3D59] border-0"
-                        />
-                      </FormControl>
-                    </FormItem>
-                  )}
-                />
-                <Button 
-                  type="submit" 
-                  disabled={isSubmitting}
-                  className="bg-primary hover:bg-opacity-90 px-4 py-2 rounded-r-md transition-colors duration-300 h-10"
-                >
-                  <i className="fas fa-paper-plane"></i>
-                </Button>
-              </form>
-            </Form>
-            <p className="text-white text-xs opacity-60">
-              We respect your privacy and will never share your information.
-            </p>
           </div>
         </div>
         
