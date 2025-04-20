@@ -3,7 +3,7 @@ import { Link } from 'wouter';
 export default function Footer() {
 
   return (
-    <footer className="bg-[#1E3D59] text-white pt-12 pb-8">
+    <footer className="bg-[#222222] text-white pt-12 pb-8">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-center items-center md:items-start gap-10 mb-12 max-w-5xl mx-auto">
           <div className="md:flex-1 flex flex-col items-center md:items-start text-center md:text-left w-full">
@@ -43,7 +43,7 @@ export default function Footer() {
                 <i className="fas fa-globe text-[#F0C987] text-lg mt-0.5 mr-3"></i>
                 <div className="flex items-center">
                   <span className="text-white text-base opacity-80 mr-3">Follow us:</span>
-                  <a href="https://www.instagram.com/bwpa_bangalore/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#F0C987] transition-colors duration-300 bg-[#1E3D59]/40 p-2 rounded-full">
+                  <a href="https://www.instagram.com/bwpa_bangalore/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#F0C987] transition-colors duration-300 bg-[#333333] p-2 rounded-full">
                     <i className="fab fa-instagram text-xl"></i>
                   </a>
                 </div>
@@ -52,7 +52,7 @@ export default function Footer() {
           </div>
         </div>
         
-        <div className="pt-8 border-t border-[#1E3D59]/30 text-center">
+        <div className="pt-8 border-t border-[#333333] text-center">
           <p className="text-white text-base opacity-70 mb-6">
             &copy; 2025 Bengaluru Wedding Fraternity. All rights reserved.
           </p>
