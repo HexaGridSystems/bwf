@@ -81,7 +81,7 @@ export default function Footer() {
               <a href="#" className="text-white hover:text-[#F0C987] transition-colors duration-300">
                 <i className="fab fa-facebook-f"></i>
               </a>
-              <a href="#" className="text-white hover:text-[#F0C987] transition-colors duration-300">
+              <a href="https://www.instagram.com/bwpa_bangalore/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#F0C987] transition-colors duration-300">
                 <i className="fab fa-instagram"></i>
               </a>
               <a href="#" className="text-white hover:text-[#F0C987] transition-colors duration-300">
