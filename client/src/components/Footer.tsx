@@ -19,11 +19,6 @@ export default function Footer() {
             <p className="text-white text-base opacity-80 mb-6 max-w-md px-4 md:px-0">
               Uniting wedding professionals to elevate the industry standards and create exceptional experiences for couples.
             </p>
-            <div className="flex space-x-4 mb-8 md:mb-4">
-              <a href="https://www.instagram.com/bwpa_bangalore/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#F0C987] transition-colors duration-300 bg-[#1E3D59]/40 p-3 rounded-full">
-                <i className="fab fa-instagram text-2xl"></i>
-              </a>
-            </div>
           </div>
           
           <div className="md:flex-1 flex flex-col items-center md:items-start text-center md:text-left w-full">
@@ -43,6 +38,15 @@ export default function Footer() {
                   123 Wedding Boulevard<br />
                   Whitefield, Bengaluru 560066
                 </span>
+              </li>
+              <li className="flex items-start justify-center md:justify-start mt-4">
+                <i className="fas fa-globe text-[#F0C987] text-lg mt-0.5 mr-3"></i>
+                <div className="flex items-center">
+                  <span className="text-white text-base opacity-80 mr-3">Follow us:</span>
+                  <a href="https://www.instagram.com/bwpa_bangalore/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#F0C987] transition-colors duration-300 bg-[#1E3D59]/40 p-2 rounded-full">
+                    <i className="fab fa-instagram text-xl"></i>
+                  </a>
+                </div>
               </li>
             </ul>
           </div>
