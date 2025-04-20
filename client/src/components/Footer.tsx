@@ -78,17 +78,8 @@ export default function Footer() {
               Uniting wedding professionals to elevate the industry standards and create exceptional experiences for couples.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-white hover:text-[#F0C987] transition-colors duration-300">
-                <i className="fab fa-facebook-f"></i>
-              </a>
               <a href="https://www.instagram.com/bwpa_bangalore/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#F0C987] transition-colors duration-300">
-                <i className="fab fa-instagram"></i>
-              </a>
-              <a href="#" className="text-white hover:text-[#F0C987] transition-colors duration-300">
-                <i className="fab fa-linkedin-in"></i>
-              </a>
-              <a href="#" className="text-white hover:text-[#F0C987] transition-colors duration-300">
-                <i className="fab fa-twitter"></i>
+                <i className="fab fa-instagram text-xl"></i>
               </a>
             </div>
           </div>
