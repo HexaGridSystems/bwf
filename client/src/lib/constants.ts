@@ -1,6 +1,6 @@
 import { SpeakerType, GalleryImageType, SponsorType, FaqItemType, ScheduleItemType, AmenityType } from "./types";
 
-export const EVENT_DATE = "November 15, 2023 09:00:00";
+export const EVENT_DATE = "November 15, 2025 09:00:00";
 export const EVENT_LOCATION = "The Grand Pavilion, Bengaluru";
 export const EVENT_ADDRESS = "123 Wedding Boulevard, Whitefield, Bengaluru 560066";
 

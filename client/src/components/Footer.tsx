@@ -144,7 +144,7 @@ export default function Footer() {
         
         <div className="pt-8 border-t border-[#1E3D59]/30 text-center">
           <p className="text-white text-sm opacity-70">
-            &copy; 2023 Bengaluru Wedding Fraternity. All rights reserved.
+            &copy; 2025 Bengaluru Wedding Fraternity. All rights reserved.
           </p>
           <div className="flex justify-center space-x-4 mt-4">
             <a href="#" className="text-white text-xs opacity-70 hover:opacity-100 transition-colors duration-300">Privacy Policy</a>
