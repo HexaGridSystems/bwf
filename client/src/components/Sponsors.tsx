@@ -66,12 +66,6 @@ export default function Sponsors() {
             </motion.div>
           ))}
         </motion.div>
-        
-        <div className="text-center mt-12">
-          <a href="#" className="inline-block text-primary hover:text-[#1E3D59] transition-colors duration-300">
-            Interested in becoming a sponsor? <i className="fas fa-arrow-right ml-1"></i>
-          </a>
-        </div>
       </div>
     </section>
   );
