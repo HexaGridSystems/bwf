@@ -7,7 +7,6 @@ import Home from "@/pages/Home";
 import AboutPage from "@/pages/AboutPage";
 import EventPage from "@/pages/EventPage";
 import SpeakersPage from "@/pages/SpeakersPage";
-import FaqPage from "@/pages/FaqPage";
 import BookPage from "@/pages/BookPage";
 import BackToTop from "./components/BackToTop";
 
@@ -18,7 +17,6 @@ function Router() {
       <Route path="/about" component={AboutPage} />
       <Route path="/event" component={EventPage} />
       <Route path="/speakers" component={SpeakersPage} />
-      <Route path="/faq" component={FaqPage} />
       <Route path="/book" component={BookPage} />
       <Route component={NotFound} />
     </Switch>

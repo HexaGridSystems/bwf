@@ -20,7 +20,6 @@ const quickLinks = [
   { name: 'About BWF', href: '/about' },
   { name: 'Event Information', href: '/event' },
   { name: 'Speakers', href: '/speakers' },
-  { name: 'FAQs', href: '/faq' },
   { name: 'Book Now', href: '/book' }
 ];
 
