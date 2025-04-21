@@ -235,7 +235,6 @@ export default function RsvpForm() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="font-['Great_Vibes'] text-primary text-3xl">Join Us</span>
           <h2 className="font-['Playfair_Display'] text-[#1E3D59] text-3xl md:text-4xl font-bold mt-2 mb-6">Book Your Spot</h2>
           <div className="w-20 h-1 bg-[#F0C987] mx-auto mb-6"></div>
           <p className="text-gray-600 leading-relaxed">
