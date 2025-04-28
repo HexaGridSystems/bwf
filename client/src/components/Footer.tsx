@@ -8,7 +8,7 @@ export default function Footer() {
           <div className="md:flex-1 flex flex-col items-center md:items-start text-center md:text-left w-full">
             <div className="flex items-center mb-6 justify-center md:justify-start">
               <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center mr-3">
-                <span className="font-['Great_Vibes'] text-primary text-2xl">BWF</span>
+                <span className="font-['Great_Vibes'] text-primary text-2xl">WF</span>
               </div>
               <div>
                 <h4 className="font-['Playfair_Display'] text-white text-xl font-semibold leading-none">Wedding</h4>
@@ -33,7 +33,7 @@ export default function Footer() {
                 <i className="fas fa-globe text-[#F0C987] text-lg mt-0.5 mr-3"></i>
                 <div className="flex items-center">
                   <span className="text-white text-base opacity-80 mr-3">Follow us:</span>
-                  <a href="https://www.instagram.com/bwpa_bangalore/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#F0C987] transition-colors duration-300 bg-[#1E3D59]/40 p-2 rounded-full">
+                  <a href="https://www.instagram.com/weddingfraternity/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#F0C987] transition-colors duration-300 bg-[#1E3D59]/40 p-2 rounded-full">
                     <i className="fab fa-instagram text-xl"></i>
                   </a>
                 </div>

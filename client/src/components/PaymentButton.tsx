@@ -117,7 +117,7 @@ export default function PaymentButton({
       key: 'rzp_test_1QDacirIxfYGdY', // Directly using the key for troubleshooting purposes
       amount: order.amount,
       currency: order.currency,
-      name: 'Bengaluru Wedding Fraternity',
+      name: 'Wedding Fraternity',
       description,
       order_id: order.id,
       handler: function (response: any) {

@@ -108,7 +108,7 @@ export default function RsvpForm() {
       key: 'rzp_test_1QDacirIxfYGdY', // Directly using the key for testing
       amount: order.amount,
       currency: order.currency,
-      name: 'Bengaluru Wedding Fraternity',
+      name: 'Wedding Fraternity',
       description: "Annual Event Registration",
       order_id: order.id,
       handler: function (response: any) {
@@ -180,7 +180,7 @@ export default function RsvpForm() {
           name: attendee.name,
           email: attendee.email,
           phone: attendee.phone,
-          description: "Bengaluru Wedding Fraternity Annual Event Registration"
+          description: "Wedding Fraternity Annual Event Registration"
         }
       });
       
@@ -238,7 +238,7 @@ export default function RsvpForm() {
           <h2 className="font-['Playfair_Display'] text-[#1E3D59] text-3xl md:text-4xl font-bold mt-2 mb-6">Book Your Spot</h2>
           <div className="w-20 h-1 bg-[#F0C987] mx-auto mb-6"></div>
           <p className="text-gray-600 leading-relaxed">
-            Secure your place at the Bengaluru Wedding Fraternity Annual Event. Limited seats available, book today!
+            Secure your place at the Wedding Fraternity Annual Event. Limited seats available, book today!
           </p>
         </motion.div>
         
