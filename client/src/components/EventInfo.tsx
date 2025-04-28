@@ -35,7 +35,7 @@ export default function EventInfo() {
                 </div>
                 <div>
                   <h3 className="font-['Playfair_Display'] text-[#1E3D59] text-2xl font-semibold">Event Date & Time</h3>
-                  <p className="text-gray-600">November 15, 2023 • 9:00 AM - 6:00 PM</p>
+                  <p className="text-gray-600">July 15, 2025 • 9:00 AM - 6:00 PM</p>
                 </div>
               </div>
               
@@ -45,8 +45,8 @@ export default function EventInfo() {
                 </div>
                 <div>
                   <h3 className="font-['Playfair_Display'] text-[#1E3D59] text-2xl font-semibold">Venue</h3>
-                  <p className="text-gray-600">The Grand Pavilion</p>
-                  <p className="text-gray-600">123 Wedding Blvd, Bengaluru</p>
+                  <p className="text-gray-600">PRINCESS SHRINE</p>
+                  <p className="text-gray-600">Mekhri circle, Bellary Rd, Bengaluru</p>
                 </div>
               </div>
               
@@ -56,7 +56,7 @@ export default function EventInfo() {
                 </div>
                 <div>
                   <h3 className="font-['Playfair_Display'] text-[#1E3D59] text-2xl font-semibold">Registration Fee</h3>
-                  <p className="text-gray-600">₹2,500 per person (Early Bird: ₹1,800)</p>
+                  <p className="text-gray-600">₹1,000 per person</p>
                 </div>
               </div>
               
@@ -90,8 +90,8 @@ export default function EventInfo() {
                 className="w-full h-full object-cover"
               />
               <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[#1E3D59]/80 to-[#1E3D59]/70">
-                <h3 className="text-white font-['Playfair_Display'] text-2xl font-bold mb-2">The Grand Pavilion</h3>
-                <p className="text-white text-sm">Luxury venue with state-of-the-art facilities</p>
+                <h3 className="text-white font-['Playfair_Display'] text-2xl font-bold mb-2">PRINCESS SHRINE</h3>
+                <p className="text-white text-sm">Premium venue for exclusive events</p>
                 <a href="#venue" className="text-[#F0C987] hover:text-white transition-colors duration-300 mt-2 inline-block">
                   View on map <i className="fas fa-arrow-right ml-1"></i>
                 </a>

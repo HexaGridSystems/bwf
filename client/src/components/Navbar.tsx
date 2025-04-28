@@ -64,11 +64,11 @@ export default function Navbar() {
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <Link href="/" onClick={scrollToTop} className="flex items-center space-x-2 z-10">
           <div className="relative w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-            <span className="font-['Great_Vibes'] text-white text-xl">BWF</span>
+            <span className="font-['Great_Vibes'] text-white text-xl">WF</span>
           </div>
           <div>
-            <h1 className="font-['Playfair_Display'] text-[#1E3D59] text-lg font-semibold leading-none">Bengaluru</h1>
-            <p className="font-['Great_Vibes'] text-primary text-sm">Wedding Fraternity</p>
+            <h1 className="font-['Playfair_Display'] text-[#1E3D59] text-lg font-semibold leading-none">Wedding</h1>
+            <p className="font-['Great_Vibes'] text-primary text-sm">Fraternity</p>
           </div>
         </Link>
         
