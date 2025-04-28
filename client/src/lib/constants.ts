@@ -108,7 +108,7 @@ export const SPONSORS: SponsorType[] = [
 export const FAQ_ITEMS: FaqItemType[] = [
   {
     question: 'Who can attend this event?',
-    answer: 'This event is open to all wedding industry professionals including photographers, planners, decorators, caterers, venue managers, bridal fashion designers, and anyone working in the wedding ecosystem in Bengaluru.'
+    answer: 'This event is open to all wedding industry professionals including photographers, planners, decorators, caterers, venue managers, bridal fashion designers, and anyone working in the wedding ecosystem in the region.'
   },
   {
     question: 'What is included in the registration fee?',

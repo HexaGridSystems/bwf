@@ -50,10 +50,10 @@ export default function About() {
           transition={{ duration: 0.6 }}
         >
           <span className="font-['Great_Vibes'] text-primary text-3xl">Discover</span>
-          <h2 className="font-['Playfair_Display'] text-[#1E3D59] text-3xl md:text-4xl font-bold mt-2 mb-6">About The Bengaluru Wedding Fraternity</h2>
+          <h2 className="font-['Playfair_Display'] text-[#1E3D59] text-3xl md:text-4xl font-bold mt-2 mb-6">About The Wedding Fraternity</h2>
           <div className="w-20 h-1 bg-[#F0C987] mx-auto mb-6"></div>
           <p className="text-gray-600 leading-relaxed">
-            The Bengaluru Wedding Fraternity is a collaborative community of wedding professionals dedicated to elevating the wedding industry in Bangalore. We bring together photographers, planners, decorators, caterers, and other service providers to network, learn, and grow together.
+            The Wedding Fraternity is a collaborative community of wedding professionals dedicated to elevating the wedding industry standards. We bring together photographers, planners, decorators, caterers, and other service providers to network, learn, and grow together.
           </p>
         </motion.div>
         
