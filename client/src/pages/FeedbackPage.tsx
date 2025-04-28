@@ -13,21 +13,15 @@ interface Feedback {
   createdAt: string;
 }
 
-interface ApiResponse<T> {
-  success: boolean;
-  data: T;
-  message?: string;
-}
-
 export default function FeedbackPage() {
   const [averageRating, setAverageRating] = useState<number>(0);
 
-  const { data: feedbackData } = useQuery<ApiResponse<Feedback[]>>({
+  const { data: feedbackData } = useQuery({
     queryKey: ['/api/feedback'],
     enabled: true,
   });
 
-  const { data: ratingData } = useQuery<ApiResponse<{averageRating: number}>>({
+  const { data: ratingData } = useQuery({
     queryKey: ['/api/feedback/average-rating'],
     enabled: true,
   });

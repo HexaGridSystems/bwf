@@ -78,7 +78,6 @@ export default function Navbar() {
           <Link href="/about" onClick={scrollToTop} className={cn("text-[#1E3D59] hover:text-primary transition-colors duration-300", location === "/about" && "text-primary")}>About</Link>
           <Link href="/event" onClick={scrollToTop} className={cn("text-[#1E3D59] hover:text-primary transition-colors duration-300", location === "/event" && "text-primary")}>Event</Link>
           <Link href="/speakers" onClick={scrollToTop} className={cn("text-[#1E3D59] hover:text-primary transition-colors duration-300", location === "/speakers" && "text-primary")}>Speakers</Link>
-          <Link href="/feedback" onClick={scrollToTop} className={cn("text-[#1E3D59] hover:text-primary transition-colors duration-300", location === "/feedback" && "text-primary")}>Feedback</Link>
           <Link href="/book" onClick={scrollToTop} className="bg-primary hover:bg-opacity-90 text-white px-6 py-2 rounded-full transition-colors duration-300">Book Now</Link>
         </nav>
         
@@ -101,7 +100,6 @@ export default function Navbar() {
             <Link href="/about" className={cn("text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100", location === "/about" && "text-primary")} onClick={() => {setIsMenuOpen(false); scrollToTop();}}>About</Link>
             <Link href="/event" className={cn("text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100", location === "/event" && "text-primary")} onClick={() => {setIsMenuOpen(false); scrollToTop();}}>Event</Link>
             <Link href="/speakers" className={cn("text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100", location === "/speakers" && "text-primary")} onClick={() => {setIsMenuOpen(false); scrollToTop();}}>Speakers</Link>
-            <Link href="/feedback" className={cn("text-[#1E3D59] hover:text-primary py-2 border-b border-gray-100", location === "/feedback" && "text-primary")} onClick={() => {setIsMenuOpen(false); scrollToTop();}}>Feedback</Link>
             <Link href="/book" className="bg-primary text-white text-center py-2 rounded-full mt-2" onClick={() => {setIsMenuOpen(false); scrollToTop();}}>Book Now</Link>
           </div>
         </div>
