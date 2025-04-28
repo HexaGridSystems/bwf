@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertAttendeeSchema, insertContactMessageSchema, insertSubscriberSchema, insertFeedbackSchema } from "@shared/schema";
+import { insertAttendeeSchema, insertContactMessageSchema, insertSubscriberSchema } from "@shared/schema";
 import { ZodError } from "zod";
 import { fromZodError } from "zod-validation-error";
 import { createOrder, verifyPayment, getOrderDetails, getPaymentDetails } from "./payments";
@@ -112,65 +112,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.status(500).json({
         success: false,
         message: "Failed to get attendees count."
-      });
-    }
-  });
-
-  // Feedback endpoints
-  app.post("/api/feedback", async (req, res) => {
-    try {
-      const data = insertFeedbackSchema.parse(req.body);
-      const feedback = await storage.createFeedback(data);
-      
-      res.status(201).json({
-        success: true,
-        message: "Feedback submitted successfully!",
-        data: feedback
-      });
-    } catch (error) {
-      if (error instanceof ZodError) {
-        const validationError = fromZodError(error);
-        res.status(400).json({
-          success: false,
-          message: validationError.message
-        });
-      } else {
-        res.status(500).json({
-          success: false,
-          message: "Failed to submit feedback. Please try again later."
-        });
-      }
-    }
-  });
-
-  app.get("/api/feedback", async (req, res) => {
-    try {
-      const feedbacks = await storage.getAllFeedbacks();
-      
-      res.status(200).json({
-        success: true,
-        data: feedbacks
-      });
-    } catch (error) {
-      res.status(500).json({
-        success: false,
-        message: "Failed to get feedbacks."
-      });
-    }
-  });
-
-  app.get("/api/feedback/average-rating", async (req, res) => {
-    try {
-      const averageRating = await storage.getAverageRating();
-      
-      res.status(200).json({
-        success: true,
-        data: { averageRating }
-      });
-    } catch (error) {
-      res.status(500).json({
-        success: false,
-        message: "Failed to get average rating."
       });
     }
   });

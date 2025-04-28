@@ -31,14 +31,14 @@ type FormValues = z.infer<typeof formSchema>;
 export default function FeedbackForm() {
   const { toast } = useToast();
   const [submitted, setSubmitted] = useState(false);
-  const [selectedRating, setSelectedRating] = useState<number | null>(null);
+  const [selectedRating, setSelectedRating] = useState<number>(5);
   
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: '',
       email: '',
-      rating: 0,
+      rating: 5, // Start with highest rating as default
       comment: '',
     },
   });

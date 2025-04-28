@@ -16,18 +16,18 @@ interface Feedback {
 export default function FeedbackPage() {
   const [averageRating, setAverageRating] = useState<number>(0);
 
-  const { data: feedbackData } = useQuery({
+  const { data: feedbackData } = useQuery<{success: boolean, data: Feedback[]}>({
     queryKey: ['/api/feedback'],
     enabled: true,
   });
 
-  const { data: ratingData } = useQuery({
+  const { data: ratingData } = useQuery<{success: boolean, data: {averageRating: number}}>({
     queryKey: ['/api/feedback/average-rating'],
     enabled: true,
   });
 
   useEffect(() => {
-    if (ratingData?.data?.averageRating) {
+    if (ratingData?.data?.averageRating !== undefined) {
       setAverageRating(ratingData.data.averageRating);
     }
   }, [ratingData]);
