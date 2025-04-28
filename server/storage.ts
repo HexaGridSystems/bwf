@@ -264,6 +264,33 @@ export class DatabaseStorage implements IStorage {
   async getAllSubscribers(): Promise<Subscriber[]> {
     return await db.select().from(subscribers);
   }
+
+  // Feedback methods
+  async createFeedback(feedbackData: InsertFeedback): Promise<Feedback> {
+    // Ensure comment is never undefined
+    const comment = feedbackData.comment === undefined ? null : feedbackData.comment;
+    
+    const [feedback] = await db
+      .insert(feedbacks)
+      .values({
+        ...feedbackData,
+        comment
+      })
+      .returning();
+    return feedback;
+  }
+
+  async getAllFeedbacks(): Promise<Feedback[]> {
+    return await db.select().from(feedbacks);
+  }
+
+  async getAverageRating(): Promise<number> {
+    const result = await db.select().from(feedbacks);
+    if (result.length === 0) return 0;
+    
+    const sum = result.reduce((acc, feedback) => acc + feedback.rating, 0);
+    return sum / result.length;
+  }
 }
 
 // Use the database storage implementation
