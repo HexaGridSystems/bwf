@@ -35,8 +35,10 @@ export default function Footer() {
               <li className="flex items-start justify-center md:justify-start">
                 <i className="fas fa-map-marker-alt text-[#F0C987] text-lg mt-0.5 mr-3"></i>
                 <span className="text-white text-base opacity-80 text-center md:text-left">
-                  123 Wedding Boulevard<br />
-                  Whitefield, Bengaluru 560066
+                  PRINCESS SHRINE gate no 9<br />
+                  princess academy palace Mekhri circle,<br />
+                  Bellary Rd, mekri, Bengaluru,<br />
+                  Karnataka 560083
                 </span>
               </li>
               <li className="flex items-start justify-center md:justify-start mt-4">

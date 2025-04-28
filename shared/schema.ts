@@ -2,6 +2,15 @@ import { pgTable, text, serial, integer, boolean, timestamp } from "drizzle-orm/
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
+export const feedbacks = pgTable("feedbacks", {
+  id: serial("id").primaryKey(),
+  name: text("name").notNull(),
+  email: text("email").notNull(),
+  rating: integer("rating").notNull(),
+  comment: text("comment"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
 export const attendees = pgTable("attendees", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
@@ -44,6 +53,11 @@ export const insertSubscriberSchema = createInsertSchema(subscribers).omit({
   subscribedAt: true,
 });
 
+export const insertFeedbackSchema = createInsertSchema(feedbacks).omit({
+  id: true,
+  createdAt: true,
+});
+
 export type InsertAttendee = z.infer<typeof insertAttendeeSchema>;
 export type Attendee = typeof attendees.$inferSelect;
 
@@ -52,3 +66,6 @@ export type ContactMessage = typeof contactMessages.$inferSelect;
 
 export type InsertSubscriber = z.infer<typeof insertSubscriberSchema>;
 export type Subscriber = typeof subscribers.$inferSelect;
+
+export type InsertFeedback = z.infer<typeof insertFeedbackSchema>;
+export type Feedback = typeof feedbacks.$inferSelect;
