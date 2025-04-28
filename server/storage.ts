@@ -1,4 +1,4 @@
-import { attendees, contactMessages, subscribers, feedbacks, type InsertAttendee, type Attendee, type InsertContactMessage, type ContactMessage, type InsertSubscriber, type Subscriber, type InsertFeedback, type Feedback } from "@shared/schema";
+import { attendees, contactMessages, subscribers, type InsertAttendee, type Attendee, type InsertContactMessage, type ContactMessage, type InsertSubscriber, type Subscriber } from "@shared/schema";
 import { db } from "./db";
 import { eq } from "drizzle-orm";
 
@@ -19,32 +19,23 @@ export interface IStorage {
   createSubscriber(subscriber: InsertSubscriber): Promise<Subscriber>;
   getSubscriberByEmail(email: string): Promise<Subscriber | undefined>;
   getAllSubscribers(): Promise<Subscriber[]>;
-
-  // Feedback methods
-  createFeedback(feedback: InsertFeedback): Promise<Feedback>;
-  getAllFeedbacks(): Promise<Feedback[]>;
-  getAverageRating(): Promise<number>;
 }
 
 export class MemStorage implements IStorage {
   private attendees: Map<number, Attendee>;
   private contactMessages: Map<number, ContactMessage>;
   private subscribers: Map<number, Subscriber>;
-  private feedbacks: Map<number, Feedback>;
   private attendeeId: number;
   private messageId: number;
   private subscriberId: number;
-  private feedbackId: number;
 
   constructor() {
     this.attendees = new Map();
     this.contactMessages = new Map();
     this.subscribers = new Map();
-    this.feedbacks = new Map();
     this.attendeeId = 1;
     this.messageId = 1;
     this.subscriberId = 1;
-    this.feedbackId = 1;
   }
 
   // Attendee methods
@@ -147,37 +138,6 @@ export class MemStorage implements IStorage {
   async getAllSubscribers(): Promise<Subscriber[]> {
     return Array.from(this.subscribers.values());
   }
-
-  // Feedback methods
-  async createFeedback(feedbackData: InsertFeedback): Promise<Feedback> {
-    const id = this.feedbackId++;
-    const now = new Date();
-    
-    // Ensure comment is never undefined
-    const comment = feedbackData.comment === undefined ? null : feedbackData.comment;
-    
-    const feedback: Feedback = {
-      ...feedbackData,
-      comment,
-      id,
-      createdAt: now
-    };
-    
-    this.feedbacks.set(id, feedback);
-    return feedback;
-  }
-
-  async getAllFeedbacks(): Promise<Feedback[]> {
-    return Array.from(this.feedbacks.values());
-  }
-
-  async getAverageRating(): Promise<number> {
-    const feedbacks = Array.from(this.feedbacks.values());
-    if (feedbacks.length === 0) return 0;
-    
-    const sum = feedbacks.reduce((acc, feedback) => acc + feedback.rating, 0);
-    return sum / feedbacks.length;
-  }
 }
 
 export class DatabaseStorage implements IStorage {
@@ -263,33 +223,6 @@ export class DatabaseStorage implements IStorage {
 
   async getAllSubscribers(): Promise<Subscriber[]> {
     return await db.select().from(subscribers);
-  }
-
-  // Feedback methods
-  async createFeedback(feedbackData: InsertFeedback): Promise<Feedback> {
-    // Ensure comment is never undefined
-    const comment = feedbackData.comment === undefined ? null : feedbackData.comment;
-    
-    const [feedback] = await db
-      .insert(feedbacks)
-      .values({
-        ...feedbackData,
-        comment
-      })
-      .returning();
-    return feedback;
-  }
-
-  async getAllFeedbacks(): Promise<Feedback[]> {
-    return await db.select().from(feedbacks);
-  }
-
-  async getAverageRating(): Promise<number> {
-    const result = await db.select().from(feedbacks);
-    if (result.length === 0) return 0;
-    
-    const sum = result.reduce((acc, feedback) => acc + feedback.rating, 0);
-    return sum / result.length;
   }
 }
 

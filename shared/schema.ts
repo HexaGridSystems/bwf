@@ -45,11 +45,6 @@ export const insertSubscriberSchema = createInsertSchema(subscribers).omit({
   subscribedAt: true,
 });
 
-export const insertFeedbackSchema = createInsertSchema(feedbacks).omit({
-  id: true,
-  createdAt: true,
-});
-
 export type InsertAttendee = z.infer<typeof insertAttendeeSchema>;
 export type Attendee = typeof attendees.$inferSelect;
 
@@ -58,6 +53,3 @@ export type ContactMessage = typeof contactMessages.$inferSelect;
 
 export type InsertSubscriber = z.infer<typeof insertSubscriberSchema>;
 export type Subscriber = typeof subscribers.$inferSelect;
-
-export type InsertFeedback = z.infer<typeof insertFeedbackSchema>;
-export type Feedback = typeof feedbacks.$inferSelect;
