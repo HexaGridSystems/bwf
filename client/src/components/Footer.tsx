@@ -6,17 +6,8 @@ export default function Footer() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-center items-center md:items-start gap-10 mb-12 max-w-5xl mx-auto">
           <div className="md:flex-1 flex flex-col items-center md:items-start text-center md:text-left w-full">
-            <div className="flex items-center mb-6 justify-center md:justify-start">
-              <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center mr-3">
-                <span className="font-['Great_Vibes'] text-primary text-2xl">WF</span>
-              </div>
-              <div>
-                <h4 className="font-['Playfair_Display'] text-white text-xl font-semibold leading-none">Wedding</h4>
-                <p className="font-['Great_Vibes'] text-[#F0C987] text-lg">Fraternity</p>
-              </div>
-            </div>
             <p className="text-white text-base opacity-80 mb-6 max-w-md px-4 md:px-0">
-              Wedding Fraternity - Uniting wedding professionals to elevate the industry standards and create exceptional experiences for couples.
+              Uniting wedding professionals to elevate the industry standards and create exceptional experiences for couples.
             </p>
 
             <h4 className="font-['Playfair_Display'] text-white text-xl font-semibold mb-5 mt-4">Contact Us</h4>
