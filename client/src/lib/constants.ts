@@ -1,8 +1,8 @@
 import { SpeakerType, GalleryImageType, SponsorType, FaqItemType, ScheduleItemType, AmenityType } from "./types";
 
 export const EVENT_DATE = "July 15, 2025 09:00:00";
-export const EVENT_LOCATION = "The Grand Pavilion, Bengaluru";
-export const EVENT_ADDRESS = "123 Wedding Boulevard, Whitefield, Bengaluru 560066";
+export const EVENT_LOCATION = "PRINCESS SHRINE, Bengaluru";
+export const EVENT_ADDRESS = "PRINCESS SHRINE gate no 9 princess academy palace Mekhri circle, Bellary Rd, mekri, Bengaluru, Karnataka 560083";
 
 export const SPEAKERS: SpeakerType[] = [
   {
@@ -124,7 +124,7 @@ export const FAQ_ITEMS: FaqItemType[] = [
   },
   {
     question: 'Is parking available at the venue?',
-    answer: 'Yes, complimentary parking is available at The Grand Pavilion. There are 200 parking spots available on a first-come, first-served basis. We also recommend carpooling or using ride-sharing services as the event is expected to reach full capacity.'
+    answer: 'Yes, complimentary parking is available at PRINCESS SHRINE. There are parking spots available on a first-come, first-served basis near gate no 9. We also recommend carpooling or using ride-sharing services as the event is expected to reach full capacity.'
   },
   {
     question: 'Will there be opportunities to promote my business?',
